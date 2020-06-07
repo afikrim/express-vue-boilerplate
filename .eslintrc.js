@@ -12,6 +12,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 11,
   },
+  ignorePatterns: ["public/js/app.js"],
   rules: {
     "no-debug": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
