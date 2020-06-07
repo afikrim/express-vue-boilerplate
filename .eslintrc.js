@@ -4,15 +4,15 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ["airbnb-base"],
+  extends: ["airbnb-base", "plugin:vue/recommended"],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
   },
   parserOptions: {
-    ecmaVersion: 11,
+    parser: "babel-eslint",
   },
-  ignorePatterns: ["public/js/app.js"],
+  ignorePatterns: ["dist/js/app.js"],
   rules: {
     "no-debug": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
