@@ -1,6 +1,6 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -35,7 +35,7 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json'],
   },
   plugins: [
-    new ExtractTextPlugin('css/app.css'),
     new VueLoaderPlugin(),
+    new ExtractTextPlugin('css/app.css'),
   ],
 };

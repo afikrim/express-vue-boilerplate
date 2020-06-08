@@ -7,9 +7,10 @@
     "dev": "nodemon ./bin/www",
     "lint": "eslint --ext .vue,.jsx,.js .",
     "lint:fix": "npm run lint -- --fix",
-    "build": "npm run webpack",
-    "watch": "npm run webpack -- --watch",
-    "webpack": "cross-env NODE_ENV=development webpack --progress --hide-modules"
+    "build": "npm run webpack:production",
+    "watch": "npm run webpack:development -- --watch",
+    "webpack:development": "cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "webpack:production": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "axios": "^0.19.2",
