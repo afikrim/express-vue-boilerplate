@@ -1,6 +1,18 @@
 include ../templates/header.pug
 
-#app
+nav.navbar.navbar-expand-lg.navbar-light.bg-white.shadow-sm
+  .container
+    a.navbar-brand(href="#") Express Vue
+    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+      span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      // left nav
+      ul.navbar-nav.mr-auto
+
+      // right nav
+      ul.navbar-nav.ml-auto
+
+#app.py-4
   block content
 
 include ../templates/footer.pug
