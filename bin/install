@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const { exec } = require('child_process');
+const path = require('path');
+
+const deleteFolderRecursive = (dirname) => {
+  if (fs.existsSync(dirname)) {
+    fs.readdirSync(dirname).forEach((file) => {
+      const curPath = path.join(dirname, file);
+      if (fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteFolderRecursive(curPath);
+      } else { // delete file
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(dirname);
+  }
+};
+
+const deleteGitFolder = deleteFolderRecursive(path.join(process.cwd(), '.git'));
+
+const initializeGitRepository = exec('git init', (error, stdout, stderr) => {
+  if (error) console.error(`Error: ${error.message}`);
+  if (stderr) console.error(`Stderr: ${stderr}`);
+
+  console.warn('Repository initialized');
+});
+
+const addDotEnvFile = fs.copyFileSync(path.join(process.cwd(), '.env.example'), path.join(process.cwd(), '.env'));
+
+module.exports = () => {
+  deleteGitFolder();
+
+  initializeGitRepository();
+
+  addDotEnvFile();
+};
