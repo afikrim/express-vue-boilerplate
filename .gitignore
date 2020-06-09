@@ -62,3 +62,7 @@ typings/
 
 # webpack build output
 dist
+
+# lock file
+package-lock.json
+yarn.lock
